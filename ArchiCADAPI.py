@@ -27,5 +27,5 @@ def x():
 #print(acc.GetElementsRelatedToZones(zones, doors))
 
 #print(acc.GetPropertyValuesOfElements(doors, [propertyUserIds])[0].propertyValues)
-
+print('hello world')
 
