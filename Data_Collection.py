@@ -187,9 +187,9 @@ def rename(element):
 
 
 
-print(rename('Door'))
+#print(rename('Door'))
 #print(getdata('Door'))
-print(savedata())
+#print(savedata())
 
 
 #work list:
@@ -202,6 +202,16 @@ print(savedata())
 #test!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #df = pd.read_csv('C:\\Users\\fabio\\OneDrive\\Dokumente\\Coding\\IFCnAPI_Project\\IFCnAPI_Code\\Output\\test_v1.csv')
 #print((df['Raumnummer']=='WE 000').sum())   #'not iterable': google for numpy iteration
+
+
+
+
+
+
+
+
+#print(acc.GetElementsRelatedToZones([zones][0], zones))
+print(acc.GetPropertyValuesOfElements([{'elementId': {'guid': '158ED699-99F8-4376-AE93-2EFC1AB556B7'}}], [general_element_ID])[0].propertyValues[0].propertyValue.value)
 
 
 #-----stops time-----#
