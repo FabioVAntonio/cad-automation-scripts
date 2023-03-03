@@ -182,14 +182,14 @@ def rename(element):
         n = 0
         for i2 in (list(array_merged_keys_index.values())[i]):
             n += 1      
-            acc.SetPropertyValuesOfElements([act.ElementPropertyValue(acc.GetElementsByType('Door')[i2].elementId, general_element_ID, act.NormalStringPropertyValue(f'{list(array_merged_keys.keys())[i]} T{n}'))])
+            acc.SetPropertyValuesOfElements([act.ElementPropertyValue(acc.GetElementsByType(element)[i2].elementId, general_element_ID, act.NormalStringPropertyValue(f'{list(array_merged_keys.keys())[i]} T{n}'))])
     return 'Process done.'
 
 
 
 #print(rename('Door'))
-#print(getdata('Door'))
-#print(savedata())
+print(getdata('Door'))
+print(savedata())
 
 
 #work list:
@@ -210,8 +210,6 @@ def rename(element):
 
 
 
-#print(acc.GetElementsRelatedToZones([zones][0], zones))
-print(acc.GetPropertyValuesOfElements([{'elementId': {'guid': '158ED699-99F8-4376-AE93-2EFC1AB556B7'}}], [general_element_ID])[0].propertyValues[0].propertyValue.value)
 
 
 #-----stops time-----#
