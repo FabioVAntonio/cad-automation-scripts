@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<BuildingInformation>
+	<PropertyDefinitionGroups>
+		<PropertyDefinitionGroup>
+			<Name>Test Gruppe</Name>
+			<Description/>
+			<PropertyDefinitions>
+				<PropertyDefinition>
+					<Name>Test Eigenschaft</Name>
+					<Description/>
+					<ValueDescriptor Type="SingleValueDescriptor">
+						<ValueType>String</ValueType>
+					</ValueDescriptor>
+					<MeasureType>Default</MeasureType>
+					<DefaultValue>
+						<DefaultValueType>Basic</DefaultValueType>
+						<Variant Type="StringVariant">
+							<Status>UserUndefined</Status>
+						</Variant>
+					</DefaultValue>
+					<ClassificationIDs>
+						<ClassificationID>
+							<ItemID>Vorwand / Installationswand</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Elementwand</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Wand</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Tür / Tor</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Streifenfundament</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Punktfundament</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Bodenplatte / Flachgründung</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Fußbodenaufbau</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Abgehängte Decke / Deckenbekleidung</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Sonnenschutz</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Fensterladen</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Jalousie</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Markise</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Klapptür</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Tor</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Tür</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Bewegliche Wand</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Brüstung</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+						<ClassificationID>
+							<ItemID>Trennwand</ItemID>
+							<SystemIDName>ARCHICAD Klassifizierung</SystemIDName>
+							<SystemIDVersion>24</SystemIDVersion>
+						</ClassificationID>
+					</ClassificationIDs>
+				</PropertyDefinition>
+			</PropertyDefinitions>
+		</PropertyDefinitionGroup>
+	</PropertyDefinitionGroups>
+</BuildingInformation>
