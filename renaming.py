@@ -182,8 +182,8 @@ def check_data(element, Element_IDs, file):
 #-------------------check missing data-----------------#
 
 
-#x('Door', ElementID, 'C:\\Users\\fabio\\OneDrive\\Dokumente\\Coding\\main_project\\main_code\\Output\\test1.csv').rename()
-#check_data('Door', ElementID, 'C:\\Users\\fabio\\OneDrive\\Dokumente\\Coding\\main_project\\main_code\\Output\\test1.csv')
+x('Door', ElementID, 'C:\\Users\\fabio\\OneDrive\\Dokumente\\Coding\\main_project\\main_code\\Output\\test1.csv').rename()
+check_data('Door', ElementID, 'C:\\Users\\fabio\\OneDrive\\Dokumente\\Coding\\main_project\\main_code\\Output\\test1.csv')
 
 
 

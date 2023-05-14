@@ -4,7 +4,7 @@ import ifcopenshell
 from ifcopenshell.util.selector import Selector
 
 
-ifc = ifcopenshell.open('C:/Users/fabio/OneDrive/Dokumente/Coding/IFCnAPI_Project//IFCnAPI_Code/IFCs and PLNs/Test.ifc')
+ifc = ifcopenshell.open('./IFCs and PLNs/Test.ifc')
 selector = Selector()
 
 
@@ -15,14 +15,15 @@ zone = ifc.by_type('IfcSpace')[0]
 door = ifc.by_type('IfcDoor')[0]
 
 #print(wall.get_info())      #gets: id , type, GlobalId, OwnerHistory, Name, etc.. in key/value pairs
-#print(wall.get_info().get('Name'))  #pick out specific info
+#print(wall.get_info().get('Name'))  #pick out specific info  or in short: print(wall.Name)
 
-#print(zone.get_info().get('Name'))  #or in short: print(zone.Name)
-print(door.get_info().get('Name'))
+zones[2].Name = 'Test room number'
+#print(door.get_info().get('Name'))
 print(zones[2].Name)
+ifc = ifc.write('./IFCs and PLNs/Test.ifc')
 
 
-elements = selector.parse(ifc, '@@ .IfcSpace & ( .IfcDoor  )')[2]
-elements_2 = selector.parse(ifc, '@@ .IfcSpace & ( .IfcDoor  )')[4]
-print(elements)
+#elements = selector.parse(ifc, '@@ .IfcSpace & ( .IfcDoor  )')
+#elements_2 = selector.parse(ifc, '@@ .IfcSpace & ( .IfcDoor  )')[4]
+#print(elements_2)
 
