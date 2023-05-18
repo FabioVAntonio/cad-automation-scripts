@@ -126,9 +126,12 @@ class x:     #get all values if array contains propertyValues -> propertyValue -
             for index in (list(array_merged_keys_index.values())[i]):
                 if index in df[df['E2']== 'Kellerabteil' ]['Element_Index'].values:
                     acc.SetPropertyValuesOfElements([act.ElementPropertyValue(acc.GetElementsByType('Door')[index].elementId, ElementID, act.NormalStringPropertyValue(f' Kellerabteil {list(array_merged_keys.keys())[i]} T{1}'))])
+                elif 'WE' in list(array_merged_keys.keys())[i]:
+                    n += 1      
+                    acc.SetPropertyValuesOfElements([act.ElementPropertyValue(acc.GetElementsByType('Door')[index].elementId, ElementID, act.NormalStringPropertyValue(f'{list(array_merged_keys.keys())[i][3:7]} T0{n}'))])
                 else:
                     n += 1      
-                    acc.SetPropertyValuesOfElements([act.ElementPropertyValue(acc.GetElementsByType('Door')[index].elementId, ElementID, act.NormalStringPropertyValue(f'{list(array_merged_keys.keys())[i]} T{n}'))])
+                    acc.SetPropertyValuesOfElements([act.ElementPropertyValue(acc.GetElementsByType('Door')[index].elementId, ElementID, act.NormalStringPropertyValue(f'{list(array_merged_keys.keys())[i]} T0{n}'))])
         
         #appending new data to csv file            
         x(self.element, self.ID, self.file).data()

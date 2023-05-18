@@ -1,0 +1,15 @@
+Current changes:
+- changed renaming pattern
+    - cutting out 'WE'
+
+- made test.pln more complex
+    - 2 seperate appartments
+
+- cleared out old ifc object ('ifc rest-trash')
+    - only outputs current names of ifc objects when using ifcopenshell
+
+
+Next up:
+- work on seperating doors per story
+    - look out where the first IfcSpace starts (from bottom -> up)
+        - maybe use (0, 0, 0) coordinates (origin) as a reference
