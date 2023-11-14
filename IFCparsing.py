@@ -25,23 +25,15 @@ test_objects = ifc.by_type('IfcFurniture')
 #print(wall.get_info().get('Name'))  #pick out specific info  or in short: print(wall.Name)
 #zones[0].Name = test  --> overwrites room number
 
-
 #placement_matrix = get_local_placement(test_objects[-2].ObjectPlacement)
 #print(placement_matrix)
 
 #test_objects[-2] = object   #changing of objects
 
-
-
-#print(test_objects[-2])
-
-
 #ifc = ifc.write('./IFCs and PLNs/Test.ifc')    #overwrites current IFC file
-
 
 #elements = selector.parse(ifc, '@@ .IfcSpace & ( .IfcDoor  )')
 #elements_2 = selector.parse(ifc, '@@ .IfcSpace & ( .IfcDoor  )')[4]
-
 
 location = ()
 #location of door[0] (as an example) with its nearest IfcSpace
@@ -65,5 +57,6 @@ def decision_tree(element, i):
     print(f'Door: {element[i].Name}  belongs to  {a[1].Name}: {a[1].LongName}\n')
     print(a)
 
-
 decision_tree(doors, 5) #Door: 1.02 T01  belongs to  WE 1.02: Bad_M ... a[1] (index is deviant)
+
+print(len(doors))

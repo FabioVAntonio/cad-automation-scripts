@@ -4,6 +4,7 @@ import csv
 import time
 import sys
 import os
+import re
 
 from archicad import ACConnection
 
@@ -14,18 +15,13 @@ acc = conn.commands
 act = conn.types
 acu = conn.utilities
 
-
-
-
 #-----starts time-----#
 start = time.time()
-
-
 
 def API_status():
     print(acc.IsAlive())
 
-#---------COMMANDS---------#
+#---------IDS---------#
 #print(acc.GetAllPropertyNames())   #gets all builtin and userdefinded property names
 
 doors = acc.GetElementsByType('Door')
@@ -33,11 +29,11 @@ zones = acc.GetElementsByType('Zone')
 
 
 ElementID = acu.GetBuiltInPropertyId('General_ElementID')
-Raumnummer = acu.GetUserDefinedPropertyId('Türen + Tore + Fenster', 'Raumnummer')
-Raumname = acu.GetUserDefinedPropertyId('Türen + Tore + Fenster', 'Raumname')
+Room_number = acu.GetUserDefinedPropertyId('Plugin', 'to room number')
+Room = acu.GetUserDefinedPropertyId('Plugin', 'to room')
 
-
-#---------COMMANDS---------#
+Width = acu.GetUserDefinedPropertyId('Plugin', 'Width')
+Height = acu.GetUserDefinedPropertyId('Plugin', 'Height')
 
 
 #---------IDS---------#
@@ -85,10 +81,10 @@ class x:     #get all values if array contains propertyValues -> propertyValue -
     def data(self):
         array_relation = []
         for i in range(len(acc.GetElementsByType(self.element))):
-            if acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Raumname])[0].propertyValues[0].propertyValue.status == 'normal':
+            if acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Room])[0].propertyValues[0].propertyValue.status == 'normal':
                 data = {
-                        'E1': acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Raumnummer])[0].propertyValues[0].propertyValue.value,
-                        'E2': acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Raumname])[0].propertyValues[0].propertyValue.value,
+                        'E1': acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Room_number])[0].propertyValues[0].propertyValue.value,
+                        'E2': acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Room])[0].propertyValues[0].propertyValue.value,
                         'Element_ID': acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [self.ID])[0].propertyValues[0].propertyValue.value,
                         'Element_Index': i, 
                         }
@@ -105,10 +101,10 @@ class x:     #get all values if array contains propertyValues -> propertyValue -
         array_merged_keys = {}
         array_merged_keys_index = {}
 
-        dataset = [{acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Raumnummer])[0].propertyValues[0].propertyValue.value : acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [self.ID])[0].propertyValues[0].propertyValue.value} for i in range(len(acc.GetElementsByType(self.element)))]
+        dataset = [{acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Room_number])[0].propertyValues[0].propertyValue.value : acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [self.ID])[0].propertyValues[0].propertyValue.value} for i in range(len(acc.GetElementsByType(self.element)))]
         #[WE X.XX : element id]
 
-        dataset_indexes = [{acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Raumnummer])[0].propertyValues[0].propertyValue.value : i} for i in range(len(acc.GetElementsByType(self.element)))]
+        dataset_indexes = [{acc.GetPropertyValuesOfElements([{'elementId': {'guid': f'{acc.GetElementsByType(self.element)[i].elementId.guid}'}}], [Room_number])[0].propertyValues[0].propertyValue.value : i} for i in range(len(acc.GetElementsByType(self.element)))]
         #[WE X.XX : element index]
 
         #merging values of duplicate keys in both data sets
@@ -147,7 +143,7 @@ class x:     #get all values if array contains propertyValues -> propertyValue -
 
 
 
-#print(y('C:\\Users\\fantonio\\Desktop\\ArchiCAD_Plugin\\csv_files\\Türliste_v2.csv', 'Door', ElementID).newvalues())  #outputs: [{'WE 003 T1': 'current'}, {'WE 002 T1': 'current'}, {'WE 002 T2': 'current'}, {'WE 000 T1': 'current'}, {'WE 001 T1': 'current'}, {'WE 002 T3': 'current'}, {'WE 004 T1': 'current'}, {'WE 002 T4': 'current'}, {'WE 000 T2': 'current'}]
+#print(y('C:\\Users\\fantonio\\Desktop\\ArchiCADAPI\\csv_files\\Türliste_v2.csv', 'Door', ElementID).newvalues())  #outputs: [{'WE 003 T1': 'current'}, {'WE 002 T1': 'current'}, {'WE 002 T2': 'current'}, {'WE 000 T1': 'current'}, {'WE 001 T1': 'current'}, {'WE 002 T3': 'current'}, {'WE 004 T1': 'current'}, {'WE 002 T4': 'current'}, {'WE 000 T2': 'current'}]
 
 #print(x('Door', ElementID).values())     #outputs: ['T000', 'T001', 'T002', 'T003', 'T004', 'T005', 'T006', 'T007', 'T008']
 #print(x('Door', Raumnummer).values())  #outputs: ['', 'WE 003', 'WE 002', 'WE 002', '', 'WE 001', 'WE 002', 'WE 004', 'WE 002']
@@ -177,16 +173,18 @@ def check_data(element, Element_IDs, file):
             index_list.append(boolean)
             missing_elementIDs.append(ID)
             missing += 1
-    print(f'Existierende Elemente: {len(index_list)}')
-    print(f'Anzahl der Elemente im Datensatz: {correct}')
-    print(f'Anzahl fehlender Elemente im Datensatz: {missing}')
-    print(f'Fehlende Elemente sind: {missing_elementIDs} \nGucken Sie zur Hilfe in die entsprechenden ArchiCAD Planungslisten.')
+    print(f'Number of elements in the project: {len(index_list)}')
+    print(f'Number of elements in the dataset: {correct}')
+    print(f'Every element has been transferred to the dataset')
+    if missing > 0:
+        print(f'Number of missing elements: {missing}')
+        print(f'Missing elements are: {missing_elementIDs}')
 
 #-------------------check missing data-----------------#
 
 
-x('Door', ElementID, 'C:\\Users\\fabio\\OneDrive\\Dokumente\\Coding\\main_project\\main_code\\Output\\test1.csv').rename()
-check_data('Door', ElementID, 'C:\\Users\\fabio\\OneDrive\\Dokumente\\Coding\\main_project\\main_code\\Output\\test1.csv')
+x('Door', ElementID, 'C:\\Users\\fabio\OneDrive\\Dokumente\Coding\\ArchiCADAPI\\main_code\\Output\\Doorlist.csv').rename()
+check_data('Door', ElementID, 'C:\\Users\\fabio\OneDrive\\Dokumente\Coding\\ArchiCADAPI\\main_code\\Output\\Doorlist.csv')
 
 
 
