@@ -1,8 +1,14 @@
-# ArchiCADAPI
+# CAD automation scripts
 
 Main Goals:
 
-- Parse data from ifc files (Room names/Building volumes, quantities etc.)
-    - Apply ML Algorithms to detect changes and predict useful information
+ArchiCAD
+- rename elements based on adjacent elements/paramters like rooms, stories etc.
+- build an AddOn for import/extraction of data
 
-- Apply ML Algorithms to ifc models to automatically rename rooms and objects
+Revit
+- rename elements based on adjacent elements/paramters like rooms, stories etc.
+
+IFCOpenshell
+- Apply ML Algorithms to ifc models to automatically rename rooms and objects based on parameters
+    - maybe through the use of topologicpy?
