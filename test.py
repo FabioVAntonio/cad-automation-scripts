@@ -1,4 +1,4 @@
-import renaming as r
+import ArchiCAD_renaming as r
 import pandas as pd
 
 from archicad import ACConnection

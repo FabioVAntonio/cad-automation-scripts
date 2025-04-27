@@ -143,7 +143,7 @@ class x:     #get all values if array contains propertyValues -> propertyValue -
 
 
 
-#print(y('C:\\Users\\fantonio\\Desktop\\ArchiCADAPI\\csv_files\\Türliste_v2.csv', 'Door', ElementID).newvalues())  #outputs: [{'WE 003 T1': 'current'}, {'WE 002 T1': 'current'}, {'WE 002 T2': 'current'}, {'WE 000 T1': 'current'}, {'WE 001 T1': 'current'}, {'WE 002 T3': 'current'}, {'WE 004 T1': 'current'}, {'WE 002 T4': 'current'}, {'WE 000 T2': 'current'}]
+#print(y('C:\\Users\\fantonio\\Desktop\\cad-automation-scripts\\csv_files\\Türliste_v2.csv', 'Door', ElementID).newvalues())  #outputs: [{'WE 003 T1': 'current'}, {'WE 002 T1': 'current'}, {'WE 002 T2': 'current'}, {'WE 000 T1': 'current'}, {'WE 001 T1': 'current'}, {'WE 002 T3': 'current'}, {'WE 004 T1': 'current'}, {'WE 002 T4': 'current'}, {'WE 000 T2': 'current'}]
 
 #print(x('Door', ElementID).values())     #outputs: ['T000', 'T001', 'T002', 'T003', 'T004', 'T005', 'T006', 'T007', 'T008']
 #print(x('Door', Raumnummer).values())  #outputs: ['', 'WE 003', 'WE 002', 'WE 002', '', 'WE 001', 'WE 002', 'WE 004', 'WE 002']
@@ -183,8 +183,8 @@ def check_data(element, Element_IDs, file):
 #-------------------check missing data-----------------#
 
 
-x('Door', ElementID, 'C:\\Users\\fabio\OneDrive\\Dokumente\Coding\\ArchiCADAPI\\main_code\\Output\\Doorlist.csv').rename()
-check_data('Door', ElementID, 'C:\\Users\\fabio\OneDrive\\Dokumente\Coding\\ArchiCADAPI\\main_code\\Output\\Doorlist.csv')
+x('Door', ElementID, 'C:\\Users\\fabio\OneDrive\\Dokumente\Coding\\cad-automation-scripts\\Output\\Doorlist.csv').rename()
+check_data('Door', ElementID, 'C:\\Users\\fabio\OneDrive\\Dokumente\Coding\\cad-automation-scripts\\Output\\Doorlist.csv')
 
 
 

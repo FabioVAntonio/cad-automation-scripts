@@ -1,3 +1,8 @@
+import time
+#-----starts time-----#
+start = time.time()
+
+
 # testing IFCOpenshell
 import multiprocessing
 import ifcopenshell
@@ -7,19 +12,20 @@ from ifcopenshell.util.selector import Selector
 from ifcopenshell.util.placement import get_local_placement
 
 
-ifc = ifcopenshell.open('./IFCs and PLNs/Test.ifc')
-ifc_objects = ifcopenshell.open('./IFCs and PLNs/Objects.ifc')
+ifc_Test = ifcopenshell.open('./IFCs, PLNs and RVTs/Test.ifc')
+ifc_Test_new = ifcopenshell.open('./IFCs, PLNs and RVTs/Test (new).ifc')
+ifc_objects = ifcopenshell.open('./IFCs, PLNs and RVTs/Objects.ifc')
 selector = Selector()
 
 
 
-wall = ifc.by_type('IfcWall')[0]
-zones = ifc.by_type('IfcSpace')
-zone = ifc.by_type('IfcSpace')[0]
-doors = ifc.by_type('IfcDoor')
+wall = ifc_Test.by_type('IfcWall')[0]
+zones = ifc_Test.by_type('IfcSpace')
+zone = ifc_Test.by_type('IfcSpace')[0]
+doors = ifc_Test.by_type('IfcDoor')
 
 object = ifc_objects.by_type('IfcFurniture')
-test_objects = ifc.by_type('IfcFurniture')
+test_objects = ifc_Test.by_type('IfcFurniture')
 
 #print(wall.get_info())      #gets: id , type, GlobalId, OwnerHistory, Name, etc.. in key/value pairs
 #print(wall.get_info().get('Name'))  #pick out specific info  or in short: print(wall.Name)
@@ -48,7 +54,7 @@ def decision_tree(element, i):
     tree_settings = ifcopenshell.geom.settings()
     tree_settings.set(tree_settings.DISABLE_TRIANGULATION, True)
     tree_settings.set(tree_settings.DISABLE_OPENING_SUBTRACTIONS, True)
-    it = ifcopenshell.geom.iterator(tree_settings, ifc, include=("IfcSpace",))
+    it = ifcopenshell.geom.iterator(tree_settings, ifc_Test, include=("IfcSpace",))
     t = ifcopenshell.geom.tree()
     t.add_iterator(it)
 
@@ -57,6 +63,24 @@ def decision_tree(element, i):
     print(f'Door: {element[i].Name}  belongs to  {a[1].Name}: {a[1].LongName}\n')
     print(a)
 
-decision_tree(doors, 5) #Door: 1.02 T01  belongs to  WE 1.02: Bad_M ... a[1] (index is deviant)
+#decision_tree(doors, 5) #Door: 1.02 T01  belongs to  WE 1.02: Bad_M ... a[1] (index is deviant)
 
-print(len(doors))
+
+def renaming(): #make it input based for multiple elements
+    print(doors[0].get_info())
+    print(f"Original name: {doors[0].Name}")
+    doors[0].Name = "Test"
+    print(f"Renaming: SUCCESSFUL")
+
+    ifc_Test.write('./IFCs, PLNs and RVTs/Test (new).ifc')
+    print("Saving: SUCCESSFUL")
+
+    doors_new = ifc_Test_new.by_type('IfcDoor')
+    print(f"New name: {doors_new[0].Name}")
+
+renaming()
+
+
+#-----stops time-----#
+end = time.time()
+print('Runtime is:', (end-start) * 1, 's')
