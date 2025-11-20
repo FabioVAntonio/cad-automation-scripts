@@ -64,8 +64,6 @@ def all_indexes_of_items(seq,item):
 
 #--------duplicate function---------#
 
-
-
 class x:     #get all values if array contains propertyValues -> propertyValue -> value
     def __init__(self, element, ID, file):
         self.element = element

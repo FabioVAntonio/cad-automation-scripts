@@ -2,7 +2,6 @@ import time
 #-----starts time-----#
 start = time.time()
 
-
 # testing IFCOpenshell
 import multiprocessing
 import ifcopenshell
@@ -11,13 +10,16 @@ import ifcopenshell.util
 from ifcopenshell.util.selector import Selector
 from ifcopenshell.util.placement import get_local_placement
 
+IFCs = r"C:\Users\fabio\OneDrive\Dokumente\Coding\cad-automation-scripts\IFCs, PLNs and RVTs"
+ifc_Test = ifcopenshell.open(IFCs+r"\Test.ifc")
 
-ifc_Test = ifcopenshell.open('./IFCs, PLNs and RVTs/Test.ifc')
-ifc_Test_new = ifcopenshell.open('./IFCs, PLNs and RVTs/Test (new).ifc')
-ifc_objects = ifcopenshell.open('./IFCs, PLNs and RVTs/Objects.ifc')
+try:
+    ifc_Test_new = ifcopenshell.open(IFCs+r"\Test (new).ifc")
+except:
+    pass
+
+ifc_objects = ifcopenshell.open(IFCs+r'\Objects.ifc')
 selector = Selector()
-
-
 
 wall = ifc_Test.by_type('IfcWall')[0]
 zones = ifc_Test.by_type('IfcSpace')
@@ -31,18 +33,11 @@ test_objects = ifc_Test.by_type('IfcFurniture')
 #print(wall.get_info().get('Name'))  #pick out specific info  or in short: print(wall.Name)
 #zones[0].Name = test  --> overwrites room number
 
-#placement_matrix = get_local_placement(test_objects[-2].ObjectPlacement)
-#print(placement_matrix)
-
-#test_objects[-2] = object   #changing of objects
-
-#ifc = ifc.write('./IFCs and PLNs/Test.ifc')    #overwrites current IFC file
-
 #elements = selector.parse(ifc, '@@ .IfcSpace & ( .IfcDoor  )')
 #elements_2 = selector.parse(ifc, '@@ .IfcSpace & ( .IfcDoor  )')[4]
 
-location = ()
 #location of door[0] (as an example) with its nearest IfcSpace
+location = ()
 def matrix(element, i):
     global location
     matrix = get_local_placement(element[i].ObjectPlacement)
@@ -61,10 +56,8 @@ def decision_tree(element, i):
     # search tree
     a = t.select(location, extend=0.4)
     print(f'Door: {element[i].Name}  belongs to  {a[1].Name}: {a[1].LongName}\n')
-    print(a)
 
-#decision_tree(doors, 5) #Door: 1.02 T01  belongs to  WE 1.02: Bad_M ... a[1] (index is deviant)
-
+decision_tree(doors, 4)
 
 def renaming(): #make it input based for multiple elements
     print(doors[0].get_info())
@@ -77,8 +70,6 @@ def renaming(): #make it input based for multiple elements
 
     doors_new = ifc_Test_new.by_type('IfcDoor')
     print(f"New name: {doors_new[0].Name}")
-
-renaming()
 
 
 #-----stops time-----#
